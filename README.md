@@ -23,4 +23,4 @@ Please check in the config [`config.json`](config.json) for configuration option
 ## License
 
 [![Author](https://img.shields.io/static/v1?label=author&message=Zulqarnain%20Zafar&color=green)](https://zulqar.net)
-[![License](https://img.shields.io/static/v1?label=v3.0&message=GNU%20GENERAL%20PUBLIC%20LICENSE%20&color=red)](license.txt)
+[![License](https://img.shields.io/static/v1?label=v3.0&message=GNU%20GENERAL%20PUBLIC%20LICENSE%20&color=red)](LICENSE)
