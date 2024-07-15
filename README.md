@@ -1,4 +1,4 @@
-# Pure C++ Mini HTTP Web Server
+# Pure C++ HTTP Web Server
 Fast, lightweight, pure C++ HTTP Web Server
 
 ## Downloads
