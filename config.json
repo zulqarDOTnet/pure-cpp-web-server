@@ -1,0 +1,13 @@
+{
+    "port": 8080,
+    "domains": {
+        "127.0.0.1": "./domains",
+        "::1": "./domains",
+        "localhost": "./domains",
+        "server.ip.address.v4": "./domains",
+        "server.ip.address.v6": "./domains",
+        "example.com": "./domains/example.com",
+        "anotherdomain.com": "./domains/anotherdomain.com",
+        "sub-domain.foo.com": "./domains/sub-domain.foo.com"
+    }
+}

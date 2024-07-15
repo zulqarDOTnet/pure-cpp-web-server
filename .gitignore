@@ -1,3 +1,15 @@
+# OSX
+#
+.DS_Store
+
+# Misc.
+#
+.lh/
+.history/
+domains/test
+web_server_backup.cpp
+zulqarDOTnet
+
 # Prerequisites
 *.d
 
@@ -30,3 +42,8 @@
 *.exe
 *.out
 *.app
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+.vscode/
