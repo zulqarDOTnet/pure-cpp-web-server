@@ -1,7 +1,7 @@
 # Pure C++ HTTP Web Server
 Fast, lightweight, pure C++ HTTP Web Server
 
-## Downloads
+## Download
 
 ```bash
 git clone https://github.com/zulqarDOTnet/pure-cpp-web-server.git
@@ -10,9 +10,25 @@ cd pure-cpp-web-server
 
 # Compile & Run
 
+### Docker
+```bash
+docker compose build && docker compose up -d
+```
+
+### Update Docker Container
+```bash
+docker compose build --no-cache && docker compose up -d --force-recreate
+```
+
+### Removing Docker Container
+```bash
+docker stop pure-cpp-web-server
+docker rm pure-cpp-web-server
+```
+
 ### Debian/Ubuntu and other derivatives
 ```bash
-sudo apt-get install git g++ build-essential nlohmann-json3-dev libboost-all-dev zlib1g-dev zstd brotli
+sudo apt-get install g++ build-essential nlohmann-json3-dev libboost-all-dev zlib1g-dev zstd brotli
 sh build_run.sh
 ```
 

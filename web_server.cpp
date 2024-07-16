@@ -259,12 +259,14 @@ private:
 class WebServer
 {
 public:
-    WebServer(ba::io_context &io_context, const std::unordered_map<std::string, std::string> &domain_doc_roots, short port)
+    WebServer(ba::io_context &io_context, const std::unordered_map<std::string, std::string> &domain_doc_roots, short port,
+              const std::string &ipv4_address,
+              const std::string &ipv6_address)
         : io_context_(io_context),
           strand_(io_context.get_executor()),
           domain_doc_roots_(domain_doc_roots),
-          acceptor_v4_(io_context_, ba::ip::tcp::endpoint(ba::ip::address::from_string("127.0.0.1"), port)),
-          acceptor_v6_(io_context_, ba::ip::tcp::endpoint(ba::ip::address::from_string("::1"), port))
+          acceptor_v4_(io_context_, ba::ip::tcp::endpoint(ba::ip::address::from_string(ipv4_address), port)),
+          acceptor_v6_(io_context_, ba::ip::tcp::endpoint(ba::ip::address::from_string(ipv6_address), port))
     {
         acceptor_v4_.set_option(ba::ip::tcp::acceptor::reuse_address(true));
         acceptor_v6_.set_option(ba::ip::tcp::acceptor::reuse_address(true));
@@ -315,10 +317,20 @@ private:
     std::unordered_map<std::string, std::string> domain_doc_roots_;
 };
 
-int main()
+int main(int argc, char *argv[])
 {
     try
     {
+
+        if (argc != 3)
+        {
+            std::cerr << "Usage: " << argv[0] << " <ipv4_address> <ipv6_address>\n";
+            return 1;
+        }
+
+        std::string ipv4_address = argv[1];
+        std::string ipv6_address = argv[2];
+
         // Load the configuration
         auto [port, domain_doc_roots] = load_config("config.json");
         // std::cout << "Port: " << port << std::endl;
@@ -330,7 +342,7 @@ int main()
         // Start the web server
         ba::io_context io_context;
         ba::strand<ba::io_context::executor_type> strand_(io_context.get_executor());
-        WebServer server(io_context, domain_doc_roots, port);
+        WebServer server(io_context, domain_doc_roots, port, ipv4_address, ipv6_address);
         server.run();
     }
     catch (const std::exception &e)

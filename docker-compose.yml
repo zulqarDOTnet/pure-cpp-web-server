@@ -1,0 +1,18 @@
+services:
+  pure-cpp-web-server:
+    build: .
+    image: pure-cpp-web-server
+    container_name: pure-cpp-web-server
+    ports:
+      - "8080:8080"
+    #  - "8443:8443"
+    tmpfs:
+      - /tmp
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - ./:/source
+      - ./config.json:/app/config.json:ro
+      - ./domains/:/app/domains
+    restart: always
+
